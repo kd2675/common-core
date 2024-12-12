@@ -1,12 +1,16 @@
 package org.example.core.response.base.dto;
 
+import lombok.NoArgsConstructor;
 import org.example.core.response.base.vo.Code;
 import lombok.Getter;
 
 @Getter
 public class ResponseDataDTO<T> extends ResponseDTO {
+    private T data;
 
-    private final T data;
+    private ResponseDataDTO(Boolean success, Integer code, String message) {
+        super(success, code, message);
+    }
 
     private ResponseDataDTO(T data) {
         super(true, Code.OK.getCode(), Code.OK.getMessage());

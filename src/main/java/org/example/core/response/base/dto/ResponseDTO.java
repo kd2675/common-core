@@ -1,18 +1,23 @@
 package org.example.core.response.base.dto;
 
+import lombok.*;
 import org.example.core.response.base.vo.Code;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @ToString
-@RequiredArgsConstructor
 public class ResponseDTO {
+    private Boolean success;
+    private Integer code;
+    private String message;
 
-    private final Boolean success;
-    private final Integer code;
-    private final String message;
+    private ResponseDTO() {
+    }
+
+    protected ResponseDTO(Boolean success, Integer code, String message) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+    }
 
     public static ResponseDTO of(Boolean success, Code code) {
         return new ResponseDTO(success, code.getCode(), code.getMessage());

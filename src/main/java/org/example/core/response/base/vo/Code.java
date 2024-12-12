@@ -21,25 +21,25 @@ public enum Code {
 
     OK(1, HttpStatus.OK, "Ok"),
 
-    BAD_REQUEST(40000, HttpStatus.BAD_REQUEST, "Bad request"),
-    VALIDATION_ERROR(40001, HttpStatus.BAD_REQUEST, "Validation error"),
-    NOT_MATCH_PASSWORD(40002, HttpStatus.BAD_REQUEST, "Not match password"),
-    NO_SEARCH_USER(40003, HttpStatus.FORBIDDEN, "No search user"),
-    NOT_FOUND(40004, HttpStatus.NOT_FOUND, "Requested resource is not found"),
+    BAD_REQUEST(10400, HttpStatus.OK, "BAD_REQUEST"),
+    NOT_FOUND(10404, HttpStatus.OK, "NOT_FOUND"),
+    INTERNAL_ERROR(500, HttpStatus.OK, "INTERNAL_SERVER_ERROR"),
 
-    USED_AUTHORIZATION_CODE(40006, HttpStatus.UNAUTHORIZED, "Used authorization code"),
+    VALIDATION_ERROR(20300, HttpStatus.OK, "Validation error"),
+    NOT_MATCH_PASSWORD(20301, HttpStatus.OK, "Not match password"),
+    NO_SEARCH_USER(20302, HttpStatus.OK, "No search user"),
+    NOT_ENOUGH_POINT(40303, HttpStatus.OK, "Not Enough point"),
+    NO_SEARCH_ORDER(40304, HttpStatus.OK, "No search order"),
 
-    NOT_ENOUGH_POINT(40020, HttpStatus.PAYMENT_REQUIRED, "Not Enough point"),
-    NO_SEARCH_ORDER(40021, HttpStatus.NOT_FOUND, "No search order"),
+    USED_AUTHORIZATION_CODE(20400, HttpStatus.OK, "Used authorization code"),
 
-    UNAUTHORIZED(40070, HttpStatus.UNAUTHORIZED, "User unauthorized"),
-    TOKEN_SIGNATURE(40071, HttpStatus.UNAUTHORIZED, "SignatureException"),
-    TOKEN_MALFORMED(40072, HttpStatus.UNAUTHORIZED, "MalformedException"),
-    TOKEN_EXPIRED(40073, HttpStatus.UNAUTHORIZED, "ExpiredException"),
-    TOKEN_UNSUPPORTED(40074, HttpStatus.UNAUTHORIZED, "UnsupportedException"),
-    TOKEN_ILLEGAL_ARGUMENT(40075, HttpStatus.FORBIDDEN, "IllegalArgumentException"),
+    UNAUTHORIZED(40070, HttpStatus.OK, "User unauthorized"),
+    TOKEN_SIGNATURE(40071, HttpStatus.OK, "SignatureException"),
+    TOKEN_MALFORMED(40072, HttpStatus.OK, "MalformedException"),
+    TOKEN_EXPIRED(40073, HttpStatus.OK, "ExpiredException"),
+    TOKEN_UNSUPPORTED(40074, HttpStatus.OK, "UnsupportedException"),
+    TOKEN_ILLEGAL_ARGUMENT(40075, HttpStatus.OK, "IllegalArgumentException"),
 
-    INTERNAL_ERROR(50000, HttpStatus.INTERNAL_SERVER_ERROR, "Internal error"),
     DATA_ACCESS_ERROR(50001, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error");
 
 
