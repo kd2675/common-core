@@ -21,27 +21,27 @@ public enum Code {
 
     OK(1, HttpStatus.OK, "Ok"),
 
-    BAD_REQUEST(10400, HttpStatus.OK, "BAD_REQUEST"),
-    NOT_FOUND(10404, HttpStatus.OK, "NOT_FOUND"),
-    INTERNAL_ERROR(500, HttpStatus.OK, "INTERNAL_SERVER_ERROR"),
+    BAD_REQUEST(20400, HttpStatus.OK, "BAD_REQUEST"),
+    NOT_FOUND(20401, HttpStatus.OK, "NOT_FOUND"),
+
+    INTERNAL_ERROR(20500, HttpStatus.OK, "INTERNAL_SERVER_ERROR"),
 
     VALIDATION_ERROR(20300, HttpStatus.OK, "Validation error"),
     NOT_MATCH_PASSWORD(20301, HttpStatus.OK, "Not match password"),
     NO_SEARCH_USER(20302, HttpStatus.OK, "No search user"),
-    NOT_ENOUGH_POINT(40303, HttpStatus.OK, "Not Enough point"),
-    NO_SEARCH_ORDER(40304, HttpStatus.OK, "No search order"),
+    NOT_ENOUGH_POINT(20303, HttpStatus.OK, "Not Enough point"),
+    NO_SEARCH_ORDER(20304, HttpStatus.OK, "No search order"),
 
-    USED_AUTHORIZATION_CODE(20400, HttpStatus.OK, "Used authorization code"),
+    UNAUTHORIZED(20310, HttpStatus.OK, "User unauthorized"),
+    TOKEN_SIGNATURE(20311, HttpStatus.OK, "SignatureException"),
+    TOKEN_MALFORMED(20312, HttpStatus.OK, "MalformedException"),
+    TOKEN_EXPIRED(20313, HttpStatus.OK, "ExpiredException"),
+    TOKEN_UNSUPPORTED(20314, HttpStatus.OK, "UnsupportedException"),
+    TOKEN_ILLEGAL_ARGUMENT(20315, HttpStatus.OK, "IllegalArgumentException"),
+    USED_AUTHORIZATION_CODE(20316, HttpStatus.OK, "Used authorization code"),
 
-    UNAUTHORIZED(40070, HttpStatus.OK, "User unauthorized"),
-    TOKEN_SIGNATURE(40071, HttpStatus.OK, "SignatureException"),
-    TOKEN_MALFORMED(40072, HttpStatus.OK, "MalformedException"),
-    TOKEN_EXPIRED(40073, HttpStatus.OK, "ExpiredException"),
-    TOKEN_UNSUPPORTED(40074, HttpStatus.OK, "UnsupportedException"),
-    TOKEN_ILLEGAL_ARGUMENT(40075, HttpStatus.OK, "IllegalArgumentException"),
 
-    DATA_ACCESS_ERROR(50001, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error");
-
+    DATA_ACCESS_ERROR(10500, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error");
 
     private final Integer code;
     private final HttpStatus httpStatus;
