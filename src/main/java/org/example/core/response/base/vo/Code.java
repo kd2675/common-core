@@ -13,35 +13,40 @@ import java.util.Optional;
 public enum Code {
 
     // 충돌 방지를 위한 Code format
-    // X1XXX: 제이
-    // X2XXX: 셀리나
-    // X3XXX: 메이슨
-    // ex) 메이슨이 닉네임 중복 에러코드를 만든다면
+    //XXX0000 - 실제 떨궈주는 코드 HttpStatus(200 - 200번대, 400 - 400번대)
+    //000XX00 - 분류
+    //00000XX - id
     // USER_NICKNAME_DUPLICATED(13010, HttpStatus.BAD_REQUEST, "User nickname duplicated"),
 
-    OK(1, HttpStatus.OK, "Ok"),
+    OK(2000000, HttpStatus.OK, "Ok"),
 
-    BAD_REQUEST(20400, HttpStatus.OK, "BAD_REQUEST"),
-    NOT_FOUND(20401, HttpStatus.OK, "NOT_FOUND"),
+    //00 default
+    BAD_REQUEST(4000000, HttpStatus.BAD_REQUEST, "Err"),
+    NOT_FOUND(4030000, HttpStatus.NOT_FOUND, "Err"),
+    INTERNAL_SERVER_ERROR(5000000, HttpStatus.INTERNAL_SERVER_ERROR, "Err"),
 
-    INTERNAL_ERROR(20500, HttpStatus.OK, "INTERNAL_SERVER_ERROR"),
+    //01 Server Config
+    DATA_ACCESS_ERROR(5000101, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error"),
+    SERVER_DOWN(5000102, HttpStatus.INTERNAL_SERVER_ERROR, "Server is Down"),
 
-    VALIDATION_ERROR(20300, HttpStatus.OK, "Validation error"),
-    NOT_MATCH_PASSWORD(20301, HttpStatus.OK, "Not match password"),
-    NO_SEARCH_USER(20302, HttpStatus.OK, "No search user"),
-    NOT_ENOUGH_POINT(20303, HttpStatus.OK, "Not Enough point"),
-    NO_SEARCH_ORDER(20304, HttpStatus.OK, "No search order"),
+    //02 Auth
+    UNAUTHORIZED(2000200, HttpStatus.OK, "User unauthorized"),
+    TOKEN_SIGNATURE(2000201, HttpStatus.OK, "SignatureException"),
+    TOKEN_MALFORMED(2000202, HttpStatus.OK, "MalformedException"),
+    TOKEN_EXPIRED(2000203, HttpStatus.OK, "ExpiredException"),
+    TOKEN_UNSUPPORTED(2000204, HttpStatus.OK, "UnsupportedException"),
+    TOKEN_ILLEGAL_ARGUMENT(2000205, HttpStatus.OK, "IllegalArgumentException"),
+    USED_AUTHORIZATION_CODE(2000206, HttpStatus.OK, "Used authorization code"),
 
-    UNAUTHORIZED(20310, HttpStatus.OK, "User unauthorized"),
-    TOKEN_SIGNATURE(20311, HttpStatus.OK, "SignatureException"),
-    TOKEN_MALFORMED(20312, HttpStatus.OK, "MalformedException"),
-    TOKEN_EXPIRED(20313, HttpStatus.OK, "ExpiredException"),
-    TOKEN_UNSUPPORTED(20314, HttpStatus.OK, "UnsupportedException"),
-    TOKEN_ILLEGAL_ARGUMENT(20315, HttpStatus.OK, "IllegalArgumentException"),
-    USED_AUTHORIZATION_CODE(20316, HttpStatus.OK, "Used authorization code"),
+    //03 Use
+    VALIDATION_ERROR(2000300, HttpStatus.OK, "Validation error"),
+    NOT_MATCH_PASSWORD(2000301, HttpStatus.OK, "Not match password"),
+    NO_SEARCH_USER(2000302, HttpStatus.OK, "No search user"),
+    NOT_ENOUGH_POINT(2000303, HttpStatus.OK, "Not Enough point"),
+    NO_SEARCH_ORDER(2000304, HttpStatus.OK, "No search order"),
 
-
-    DATA_ACCESS_ERROR(10500, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error");
+    //99 test
+    TEST_1(4519900, HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS, "UNAVAILABLE_FOR_LEGAL_REASONS");
 
     private final Integer code;
     private final HttpStatus httpStatus;
@@ -72,7 +77,7 @@ public enum Code {
                     if (httpStatus.is4xxClientError()) {
                         return Code.BAD_REQUEST;
                     } else if (httpStatus.is5xxServerError()) {
-                        return Code.INTERNAL_ERROR;
+                        return Code.INTERNAL_SERVER_ERROR;
                     } else {
                         return Code.OK;
                     }
