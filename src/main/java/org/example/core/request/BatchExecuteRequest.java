@@ -40,18 +40,18 @@ public class BatchExecuteRequest {
                 .build();
     }
 
-    public static BatchExecuteRequest delSentHotdealHob() {
+    public static BatchExecuteRequest delSentHotdealJob() {
         return BatchExecuteRequest.builder()
-                .jobType("delSentHotdealHob")
+                .jobType("delSentHotdealJob")
                 .source("server-batch")
                 .priority(Priority.MEDIUM)
                 .requestTime(LocalDateTime.now())
                 .build();
     }
 
-    public static BatchExecuteRequest delHotdealHob() {
+    public static BatchExecuteRequest delHotdealJob() {
         return BatchExecuteRequest.builder()
-                .jobType("delHotdealHob")
+                .jobType("delHotdealJob")
                 .source("server-batch")
                 .priority(Priority.MEDIUM)
                 .requestTime(LocalDateTime.now())
