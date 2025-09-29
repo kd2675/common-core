@@ -19,6 +19,7 @@ public enum Code {
     // USER_NICKNAME_DUPLICATED(13010, HttpStatus.BAD_REQUEST, "User nickname duplicated"),
 
     OK(2000000, HttpStatus.OK, "Ok"),
+    OK_ASYNC(2020000, HttpStatus.ACCEPTED, "Ok"),
 
     //00 default
     BAD_REQUEST(4000000, HttpStatus.BAD_REQUEST, "Err"),
